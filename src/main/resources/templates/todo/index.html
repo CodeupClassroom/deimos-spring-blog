@@ -10,6 +10,7 @@
       </div>
     </header>
     <main class="container">
+        <button>New Task +</button>
         <div class="card" th:each="task : ${tasks}">
           <div class="row">
             <div class="col">
@@ -21,7 +22,7 @@
             <div class="col">
               <div class="row">
                 <div class="col">
-                  <a href="">Edit</a>
+                  <a th:href="@{|/todo/${task.id}/edit|}">Edit</a>
                 </div>
                 <div class="col">
                   <a href="">Delete</a>

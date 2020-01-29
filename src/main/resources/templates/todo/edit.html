@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/head :: head('Edit Task')"></head>
+<body>
+  <div class="wrapper">
+    <nav th:replace="partials/navbar :: navbar"></nav>
+    <header class="container my-5">
+      <div class="jumbotron">
+        <h1 class="text-center display-1">Edit a task:</h1>
+      </div>
+    </header>
+    <form th:action="@{|/todo/${task.id}/edit|}" th:method="POST">
+      <label for="title">Title</label>
+      <input id="title" name="title" type="text" th:value="${task.title}">
+      <label for="date">Date</label>
+      <input id="date" name="date" type="date" th:value="${task.date}">
+      <label for="time">Time</label>
+      <input id="time" name="time" type="time" th:value="${task.time}">
+      <label for="notes">Notes</label>
+      <input id="notes" name="notes" type="noteds" th:value="${task.notes}">
+
+      <button type="submit">Update</button>
+    </form>
+    <form th:action="@{|/todo/${task.id}/delete|}">
+      <button type="submit">Delete</button>
+    </form>
+  </div>
+</body>
+</html>
