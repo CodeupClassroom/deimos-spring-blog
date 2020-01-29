@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class AdsController {
+public class AdController {
 
     // Dependency Injection
     private AdRepository adsDao;
 
-    public AdsController(AdRepository adsDao) {
+    public AdController(AdRepository adsDao) {
         this.adsDao = adsDao;
     }
 
