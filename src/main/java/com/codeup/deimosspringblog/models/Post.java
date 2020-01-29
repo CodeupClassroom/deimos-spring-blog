@@ -1,9 +1,23 @@
 package com.codeup.deimosspringblog.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "posts")
 public class Post {
-    private String title;
-    private String body;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String body;
+
+    public Post() {
+    }
 
     public Post(long id, String title, String body){
         this.id = id;
@@ -24,5 +38,13 @@ public class Post {
 
     public void setBody(String newBody){
         this.body = newBody;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
