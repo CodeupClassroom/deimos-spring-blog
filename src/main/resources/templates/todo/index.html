@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/head :: head('To Do List')"></head>
+<body>
+  <div class="wrapper">
+    <nav th:replace="partials/navbar :: navbar"></nav>
+    <header class="container my-5">
+      <div class="jumbotron">
+        <h1 class="text-center display-1">Here's your To Do List:</h1>
+      </div>
+    </header>
+    <main class="container">
+        <div class="card" th:each="task : ${tasks}">
+          <div class="row">
+            <div class="col">
+              <h4 th:text="${task.title}">Title</h4>
+              <p th:text="${task.date}">Date</p>
+              <p th:text="${task.time}">Time</p>
+              <p th:text="${task.notes}">Notes:</p>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <a href="">Edit</a>
+                </div>
+                <div class="col">
+                  <a href="">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </main>
+  </div>
+<th:block th:replace="partials/scripts :: scripts" />
+</body>
+</html>
