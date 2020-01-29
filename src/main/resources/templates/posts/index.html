@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Posts Index</title>
-</head>
+<head th:replace="partials/head :: head('Index')"></head>
 <body>
-  <div th:each="post : ${posts}">
-    <h1 th:text="${post.title}"></h1>
-    <p th:text="${post.body}"></p>
+  <div class="wrapper">
+    <nav th:replace="partials/navbar :: navbar"></nav>
+    <header class="container my-5">
+      <div class="jumbotron">
+        <h1 class="text-center display-1">Posts</h1>
+      </div>
+    </header>
+    <main class="container">
+        <div th:each="post : ${posts}">
+          <h1 th:text="${post.title}"></h1>
+          <p th:text="${post.body}"></p>
+        </div>
+    </main>
   </div>
+<th:block th:replace="partials/scripts :: scripts" />
 </body>
 </html>

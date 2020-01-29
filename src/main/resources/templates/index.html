@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Adlister</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/head :: head('Home')"></head>
 <body>
-  <h1>Displaying all ads ....</h1>
+<div class="wrapper">
+  <nav th:replace="partials/navbar :: navbar"></nav>
+  <header class="container my-5">
+    <div class="jumbotron">
+      <h1 class="text-center display-5">Welcome to the Instructor Spring Blog!</h1>
+    </div>
+  </header>
+</div>
+<th:block th:replace="partials/scripts :: scripts" />
 </body>
 </html>
