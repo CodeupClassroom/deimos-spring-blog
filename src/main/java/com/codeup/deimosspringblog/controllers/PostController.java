@@ -69,4 +69,12 @@ public class PostController {
         return "Creating a new post...";
     }
 
+    @GetMapping("/one/test")
+    public String returnOneToOneView(Model model) {
+        model.addAttribute("posts", postDao.findAll());
+        return "one-to-one-test";
+    }
+
+
+
 }
