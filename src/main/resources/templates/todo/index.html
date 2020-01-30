@@ -10,7 +10,9 @@
       </div>
     </header>
     <main class="container">
+      <form th:action="@{/todo/create}">
         <button>New Task +</button>
+      </form>
         <div class="card" th:each="task : ${tasks}">
           <div class="row">
             <div class="col">
@@ -25,7 +27,7 @@
                   <a th:href="@{|/todo/${task.id}/edit|}">Edit</a>
                 </div>
                 <div class="col">
-                  <a href="">Delete</a>
+                  <a th:href="@{|/todo/${task.id}/delete|}">Delete</a>
                 </div>
               </div>
             </div>

@@ -24,6 +24,13 @@ public class Task {
 
     public Task(){}
 
+    public Task(String title, String date, String time, String notes){
+        this.title = title;
+        this.date = date;
+        this.time = time;
+        this.notes = notes;
+    }
+
     public long getId(){
         return id;
     }

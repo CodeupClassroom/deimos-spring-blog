@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/head :: head('New Task')"></head>
+<body>
+  <div class="wrapper">
+    <nav th:replace="partials/navbar :: navbar"></nav>
+    <header class="container my-5">
+      <div class="jumbotron">
+        <h1 class="text-center display-1">Add a task:</h1>
+      </div>
+    </header>
+    <form th:action="@{/todo/create}" th:method="post">
+      <label for="title">Title</label>
+      <input id="title" name="title" type="text" th:placeholder="Title">
+      <label for="date">Date</label>
+      <input id="date" name="date" type="date">
+      <label for="time">Time</label>
+      <input id="time" name="time" type="time">
+      <label for="notes">Notes</label>
+      <input id="notes" name="notes" type="notes" th:value="Notes">
+
+      <button type="submit">Create Task</button>
+    </form>
+  </div>
+</body>
+</html>
