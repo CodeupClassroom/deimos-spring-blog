@@ -2,7 +2,9 @@ package com.codeup.deimosspringblog.controllers;
 
 import com.codeup.deimosspringblog.models.Ad;
 import com.codeup.deimosspringblog.models.Post;
+import com.codeup.deimosspringblog.models.User;
 import com.codeup.deimosspringblog.repositories.PostRepository;
+import com.codeup.deimosspringblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +15,11 @@ import java.util.ArrayList;
 public class PostController {
 
     private PostRepository postDao;
+    private UserRepository userDao;
 
-    public PostController(PostRepository postDao) {
+    public PostController(PostRepository postDao, UserRepository userDao) {
         this.postDao = postDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/posts")
@@ -50,23 +54,28 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String viewPost(@PathVariable long id, Model model){
-        Post post1 = new Post(id,"Title 1", "Description 1");
-        model.addAttribute("title", post1.getTitle());
-        model.addAttribute("body",post1.getBody());
-//        model.addAttribute("post", post1);
+        model.addAttribute("post", postDao.getOne(id));
         return "posts/show";
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
     public String createPostForm(){
-        return "Displaying Create Post Form...";
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String submitPost(){
-        return "Creating a new post...";
+    public String submitPost(
+            @RequestParam String title,
+            @RequestParam String body
+    ){
+        Post post = new Post(title, body);
+        User user = userDao.getOne(1L);
+
+        post.setUser(user);
+
+        postDao.save(post);
+
+        return "redirect:/posts/" + post.getId();
     }
 
 }
