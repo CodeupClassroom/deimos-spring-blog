@@ -9,15 +9,18 @@
         <h1 class="text-center display-1">Edit a task:</h1>
       </div>
     </header>
-    <form th:action="@{|/todo/${task.id}/edit|}" th:method="POST">
+    <form th:action="@{|/todo/${task.id}/edit|}" th:method="POST"
+          th:object="${task}">
       <label for="title">Title</label>
-      <input id="title" name="title" type="text" th:value="${task.title}">
+      <input id="title" th:field="*{title}" type="text"
+             th:value="${task.title}">
       <label for="date">Date</label>
-      <input id="date" name="date" type="date" th:value="${task.date}">
+      <input id="date" th:field="*{date}" type="date" th:value="${task.date}">
       <label for="time">Time</label>
-      <input id="time" name="time" type="time" th:value="${task.time}">
+      <input id="time" th:field="*{time}" type="time" th:value="${task.time}">
       <label for="notes">Notes</label>
-      <input id="notes" name="notes" type="noteds" th:value="${task.notes}">
+      <input id="notes" th:field="*{notes}" type="notes"
+             th:value="${task.notes}">
 
       <button type="submit">Update</button>
     </form>

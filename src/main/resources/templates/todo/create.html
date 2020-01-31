@@ -9,15 +9,15 @@
         <h1 class="text-center display-1">Add a task:</h1>
       </div>
     </header>
-    <form th:action="@{/todo/create}" th:method="post">
+    <form th:action="@{/todo/create}" th:method="post" th:object="${task}">
       <label for="title">Title</label>
-      <input id="title" name="title" type="text" th:placeholder="Title">
+      <input id="title" th:field="*{title}" type="text" th:placeholder="Title">
       <label for="date">Date</label>
-      <input id="date" name="date" type="date">
+      <input id="date" th:field="*{date}" type="date">
       <label for="time">Time</label>
-      <input id="time" name="time" type="time">
+      <input id="time" th:field="*{time}" type="time">
       <label for="notes">Notes</label>
-      <input id="notes" name="notes" type="notes" th:value="Notes">
+      <input id="notes" th:field="*{notes}" type="text">
 
       <button type="submit">Create Task</button>
     </form>

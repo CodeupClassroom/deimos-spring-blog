@@ -4,10 +4,7 @@ import com.codeup.deimosspringblog.models.Task;
 import com.codeup.deimosspringblog.repositories.TaskRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.PastOrPresent;
 
@@ -32,15 +29,7 @@ public class ToDoController {
 
     @PostMapping("/todo/{id}/edit")
     public String updateTask(@PathVariable long id,
-                             @RequestParam String title,
-                             @RequestParam String date,
-                             @RequestParam String time,
-                             @RequestParam String notes){
-        Task task = taskDao.getOne(id);
-        task.setTitle(title);
-        task.setDate(date);
-        task.setTime(time);
-        task.setNotes(notes);
+                             @ModelAttribute Task task){
         taskDao.save(task);
         return "redirect:/todo";
     }
@@ -52,16 +41,13 @@ public class ToDoController {
     }
 
     @GetMapping("/todo/create")
-    public String createTaskForm(){
+    public String createTaskForm(Model model){
+        model.addAttribute("task",new Task());
         return "todo/create";
     }
 
     @PostMapping("/todo/create")
-    public String createTask(@RequestParam String title,
-                             @RequestParam String date,
-                             @RequestParam String time,
-                             @RequestParam String notes){
-        Task task = new Task(title, date, time, notes);
+    public String createTask(@ModelAttribute Task task){
         taskDao.save(task);
         return "redirect:/todo";
     }
