@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Viewing Post</title>
-</head>
+<head th:replace="partials/head :: head('View Post')"></head>
 <body>
-  <h1 th:text="${title}"></h1>
-  <p th:text="${body}"></p>
+<div class="wrapper">
+  <nav th:replace="partials/navbar :: navbar"></nav>
+  <header class="container my-5">
+    <div class="jumbotron">
+      <h1 class="text-center display-1">View Post</h1>
+    </div>
+  </header>
+  <main class="container">
+    <h1>
+      <span th:text="${post.title}"></span>
+      posted by <span th:text="${post.user.email}"></span>
+    </h1>
+    <p th:text="${post.body}"></p>
+    <p>Created by user with id <span th:text="${post.user.id}"></span></p>
+  </main>
+</div>
+<th:block th:replace="partials/scripts :: scripts" />
 </body>
 </html>
