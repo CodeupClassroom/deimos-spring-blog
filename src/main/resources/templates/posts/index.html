@@ -14,6 +14,10 @@
           <h1 th:text="${post.title}"></h1>
           <p th:text="${post.body}"></p>
           <p>Created by user with id <span th:text="${post.user.id}"></span></p>
+
+          <form th:action="@{|/posts/${post.id}/edit|}">
+            <button>Edit</button>
+          </form>
         </div>
     </main>
   </div>
