@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
   <title>Navbar</title>
@@ -11,22 +11,31 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" th:href="@{/posts}">Posts</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item mr-auto">
           <a class="nav-link" th:href="@{/posts/create}">Create Post</a>
         </li>
-        <li class="nav-item ml-auto">
-          <a class="nav-link" th:href="@{/login}">Login</a>
-        </li>
-        <!-- LOGOUT LIST ITEM -->
-        <li class="d-flex align-items-center mx-2">
-          <form class="d-flex align-items-center" th:action="@{/logout}" th:method="post">
-            <button style="border:none !important" class="btn-link btn p-0">Logout</button>
-          </form>
-        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <th:block sec:authorize="!isAuthenticated()">
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/login}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/sign-up}">Sign up</a>
+          </li>
+        </th:block>
+        <th:block sec:authorize="isAuthenticated()">
+          <!-- LOGOUT LIST ITEM -->
+          <li class="nav-item d-flex align-items-center mx-2">
+            <form class="d-flex align-items-center" th:action="@{/logout}" th:method="post">
+              <button style="border:none !important" class="btn-link btn p-0">Logout</button>
+            </form>
+          </li>
+        </th:block>
       </ul>
     </div>
   </nav>
