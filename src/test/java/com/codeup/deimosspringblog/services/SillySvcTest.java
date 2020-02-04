@@ -30,6 +30,4 @@ public class SillySvcTest {
         assertEquals("Hi!", sillySvc.sayHi());
     }
 
-
-
 }
