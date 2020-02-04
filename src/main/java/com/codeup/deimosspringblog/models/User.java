@@ -26,6 +26,12 @@ public class User {
     public User() {
     }
 
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     // copy constructor
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent

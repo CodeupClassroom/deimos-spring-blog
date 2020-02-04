@@ -35,7 +35,7 @@ public class AdController {
         return "ads/create";
     }
 
-    @PostMapping("/ads")
+    @PostMapping("/ads/create")
     public String insert(@ModelAttribute Ad ad) {
         ad.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         adsDao.save(ad);

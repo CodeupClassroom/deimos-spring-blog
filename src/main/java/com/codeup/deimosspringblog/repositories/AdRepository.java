@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface AdRepository extends JpaRepository<Ad, Long> {
 
-    List<Ad> findByTitle(String title);
+    Ad findByTitle(String title);
 
 
 }
