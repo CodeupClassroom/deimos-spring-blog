@@ -10,15 +10,23 @@
       </div>
     </header>
     <main class="container">
-        <div th:each="post : ${posts}">
-          <h1 th:text="${post.title}"></h1>
-          <p th:text="${post.body}"></p>
-          <p>Created by user with id <span th:text="${post.user.id}"></span></p>
-
-          <form th:action="@{|/posts/${post.id}/edit|}">
-            <button>Edit</button>
-          </form>
+      <div class="row">
+        <div th:each="post : ${posts}" class="col-12">
+          <article class="card my-1">
+            <div class="card-body">
+              <h1 th:text="${post.title}"></h1>
+              <p th:text="${post.body}"></p>
+              <p>Created by user with id <span th:text="${post.user.id}"></span></p>
+              <div class="d-flex">
+                <a class="btn btn-primary mr-auto" th:href="@{|posts/${post.id}|}">View Post</a>
+                <form class="d-inline" th:action="@{|/posts/${post.id}/edit|}">
+                  <button class="btn btn-warning">Edit Post</button>
+                </form>
+              </div>
+            </div>
+          </article>
         </div>
+      </div>
     </main>
   </div>
 <th:block th:replace="partials/scripts :: scripts" />

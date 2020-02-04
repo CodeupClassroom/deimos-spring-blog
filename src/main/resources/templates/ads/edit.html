@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit Ad</title>
 </head>
 <body>
-
+<h1>Edit Ad</h1>
+<form th:action="@{|/ads/${ad.id}/edit|}" th:method="POST" th:object="${ad}">
+    <label for="title">Title</label>
+    <input id="title" type="text" th:field="*{title}"
+           placeholder="Enter title">
+    <label for="description">Body</label>
+    <textarea id="description" th:field="*{description}"
+              placeholder="Enter description"></textarea>
+    <button>Update Ad</button>
+</form>
+<form th:action="@{|/ads/${ad.id}/delete|}" th:method="POST">
+    <button>Delete Ad</button>
+</form>
 </body>
 </html>

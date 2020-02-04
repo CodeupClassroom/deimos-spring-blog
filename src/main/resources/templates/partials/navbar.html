@@ -18,6 +18,13 @@
         <li class="nav-item mr-auto">
           <a class="nav-link" th:href="@{/posts/create}">Create Post</a>
         </li>
+        <!-- for ads -->
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/ads}">Ads</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/ads/create}">Create Ad</a>
+        </li>
       </ul>
       <ul class="navbar-nav">
         <th:block sec:authorize="!isAuthenticated()">

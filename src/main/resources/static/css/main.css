@@ -1,0 +1,11 @@
+body {
+    background: royalblue;
+}
+
+.bn {
+    min-width: 3em !important;
+}
+
+.btn-wrapper {
+    width: 100px;
+}

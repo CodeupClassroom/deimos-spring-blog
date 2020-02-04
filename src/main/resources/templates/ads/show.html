@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/head :: head('View Ad')"></head>
 <body>
+<div class="wrapper">
+    <nav th:replace="partials/navbar :: navbar"></nav>
+    <header class="container my-5">
+        <div class="jumbotron">
+            <h1 class="text-center display-1">Show Ad</h1>
+        </div>
+    </header>
+    <main class="container">
 
+        <article class="card my-1">
+            <div class="card-body">
+                <h1 th:text="${ad.title}"></h1>
+                <p th:text="${ad.description}"></p>
+                <p>Created by user with id <span th:text="${ad.user.id}"></span></p>
+                <div class="d-flex">
+                    <form class="d-inline" th:action="@{|/ads/${ad.id}/edit|}">
+                        <button class="btn btn-warning">Edit Ad</button>
+                    </form>
+                </div>
+            </div>
+        </article>
+
+    </main>
+</div>
+<th:block th:replace="partials/scripts :: scripts" />
 </body>
 </html>
