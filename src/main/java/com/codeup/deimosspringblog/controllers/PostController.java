@@ -5,6 +5,7 @@ import com.codeup.deimosspringblog.models.Post;
 import com.codeup.deimosspringblog.models.User;
 import com.codeup.deimosspringblog.repositories.PostRepository;
 import com.codeup.deimosspringblog.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -57,6 +58,8 @@ public class PostController {
 
     @GetMapping("/posts/create")
     public String createPostForm(Model model){
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(loggedInUser.getUsername());
         model.addAttribute("post", new Post());
         return "posts/create";
     }

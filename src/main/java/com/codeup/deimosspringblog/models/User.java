@@ -23,6 +23,15 @@ public class User {
     public User() {
     }
 
+    // copy constructor
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+        posts = copy.posts;
+    }
+
     public long getId() {
         return id;
     }
